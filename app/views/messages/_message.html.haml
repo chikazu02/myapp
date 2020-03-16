@@ -1,0 +1,12 @@
+
+.main__content__message{"data-main__content__message-id": "#{message.id}"}
+  .main__content__message__upper
+    .main__content__message__upper__name
+      = message.user.name
+    .main__content__message__upper__time
+      = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
+  .main__content__message__text
+    - if message.content.present?
+      %p.lower-message__content
+        = message.content
+    = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
